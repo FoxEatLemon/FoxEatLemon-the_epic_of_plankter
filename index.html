@@ -271,6 +271,141 @@ a.link-internal:hover {
     padding: 6px 10px !important;
     font-size: 0.9rem !important;
   }
+}
+
+
+/* ===== 存档系统优化 ===== */
+.save-slot {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(107, 91, 149, 0.15) !important;
+  border-radius: 10px !important;
+  margin: 0.8rem 0 !important;
+  transition: transform 0.2s ease;
+}
+
+.save-slot:hover {
+  transform: translateX(8px);
+  box-shadow: 4px 4px 12px rgba(107, 91, 149, 0.1) !important;
+}
+
+/* 存档时间戳 */
+.save-slot time {
+  color: #8888aa !important;
+  font-size: 0.9em;
+}
+
+/* 存档按钮 */
+.save-slot button {
+  background: rgba(107, 91, 149, 0.1) !important;
+  color: #6b5b95 !important;
+  border: 1px solid rgba(107, 91, 149, 0.2) !important;
+  padding: 6px 12px !important;
+}
+
+/* ===== 弹窗美化 ===== */
+.dialog {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(107, 91, 149, 0.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 40px rgba(107, 91, 149, 0.15) !important;
+}
+
+.dialog h1 {
+  font-size: 1.5rem !important;
+  color: #6b5b95 !important;
+  border-bottom: 2px solid rgba(107, 91, 149, 0.1);
+}
+
+/* 弹窗按钮容器 */
+.dialog-buttons {
+  gap: 1rem !important;
+  margin-top: 1.5rem !important;
+}
+
+/* ===== 主操作按钮组 ===== */
+/* 继续/存档/重新开始 按钮 */
+#menu-buttons button {
+  background: linear-gradient(135deg, #7a6b9e, #6b5b95) !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(107, 91, 149, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#menu-buttons button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(107, 91, 149, 0.4) !important;
+  background: linear-gradient(135deg, #6b5b95, #5a4b85) !important;
+}
+
+/* ===== 侧边栏按钮优化 ===== */
+#sidebar button:hover {
+  background: rgba(107, 91, 149, 0.15) !important;
+  color: #5a4b85 !important; /* 悬停加深颜色 */
+  border-color: rgba(107, 91, 149, 0.3) !important;
+}
+
+/* 按钮图标颜色修正 */
+#sidebar button svg {
+  fill: #6b5b95 !important;
+}
+
+/* ===== 移动端优化 ===== */
+@media (max-width: 768px) {
+  .dialog {
+    width: 90% !important;
+    padding: 1.5rem !important;
+  }
+
+  #menu-buttons button {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+    width: 100%;
+  }
+
+  .save-slot {
+    padding: 1rem !important;
+  }
+}
+
+/* ===== 微交互增强 ===== */
+button {
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 按钮按压效果 */
+button:active {
+  transform: scale(0.97) !important;
+}
+
+
+/* 侧边栏智能收起系统 */
+#ui-bar {
+  transform: translateX(calc(-100% + 40px)) !important; /* 保留40px触发区域 */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#ui-bar:hover,
+#ui-bar.ui-bar-visible {
+  transform: translateX(0) !important;
+}
+
+/* 侧边栏触发区域指示器 */
+#ui-bar::after {
+  content: "◀";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(107, 91, 149, 0.6);
+  font-size: 1.2rem;
+  opacity: 0.6;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 
