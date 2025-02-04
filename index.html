@@ -104,109 +104,174 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="浮游霁" startnode="1" creator="Twine" creator-version="2.9.2" format="SugarCube" format-version="2.37.3" ifid="A1337E7B-F6EE-453A-B8F8-A5891BE727EF" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">div {
-    color: scarlet;
+	<tw-storydata name="浮游霁" startnode="1" creator="Twine" creator-version="2.9.2" format="SugarCube" format-version="2.37.3" ifid="A1337E7B-F6EE-453A-B8F8-A5891BE727EF" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"><head>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+
+/* ======== 全局样式重置 ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-/* ——下面内容是放样式表里的—— */
-/* ——下面内容是放样式表里的—— */
-/* ——下面内容是放样式表里的—— */
-
-meter {  
-  	border: none; 
- 	height: 20px;    /* 进度条高度 */ 
-	width: 150px;     /* 进度条宽度，用于细调，可删除 */ 
-  
+/* ======== 沉浸式背景系统 ======== */
+body {
+  background: linear-gradient(
+    145deg,
+    #e6e8ff 0%,    /* 雾蓝 */
+    #d8c4ff 33%,   /* 薰衣草紫 */
+    #b5e6e6 66%,   /* 海沫绿 */
+    #ffebd8 100%   /* 晨光橙 */
+  );
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui;
+  color: #4a4a68;
+  line-height: 1.7;
+  position: relative;
+  overflow-x: hidden;
 }
 
-::-webkit-meter-bar {
-	background-color: white;  /* 进度条容器背景色 */  
-	border-radius: 0px;  /* 进度条容器圆角，0px就是方条 */
-	border: 2px solid white;
+/* 动态光晕层 */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0) 60%
+  );
+  animation: aura-flow 120s linear infinite;
+  z-index: -1;
 }
 
-::-webkit-meter-optimum-value {
-	background-color: #ffc3c3;/* 进度条填充条最佳区间颜色，一般是绿色 */     
-        }   
+/* ======== 主内容区设计 ======== */
+.passage {
+  max-width: 780px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  border: 1px solid rgba(74, 74, 104, 0.12);
+  box-shadow: 0 8px 32px rgba(74, 74, 104, 0.08);
+  position: relative;
+  z-index: 1;
+}
 
-::-webkit-meter-suboptimum-value {
-	background-color: #ff6868;/* 进度条填充条中间区间，一般是黄色或者橙色 */     
-        }  
+/* ======== 侧边栏深度美化 ======== */
+#ui-bar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(74, 74, 104, 0.1) !important;
+  box-shadow: 8px 0 24px rgba(74, 74, 104, 0.06) !important;
+  border-radius: 0 16px 16px 0;
+  padding: 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
 
-::-webkit-meter-even-less-good-value {
-	background-color: #fd2d2d;/* 进度条填充条最低区间，一般是红色 */    
-        }
+#ui-bar-title {
+  font-family: 'Georgia', serif;
+  color: #6b5b95 !important;
+  border-bottom: 2px solid rgba(107, 91, 149, 0.15);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
+}
 
+#ui-bar-body {
+  color: #666699 !important;
+  font-size: 0.95rem;
+}
 
+/* 侧边栏按钮组 */
+#sidebar button {
+  background: rgba(107, 91, 149, 0.08) !important;
+  border: 1px solid rgba(107, 91, 149, 0.15) !important;
+  color: #6b5b95 !important;
+  padding: 8px 12px !important;
+  margin: 6px 0 !important;
+  border-radius: 8px !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
 
+#sidebar button:hover {
+  background: rgba(107, 91, 149, 0.15) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(107, 91, 149, 0.1) !important;
+}
 
+/* ======== 动态效果优化 ======== */
+@keyframes aura-flow {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
 
-
-
-.popup-button{
-  float: left;
-  display: block;
-  color: #ffffff;
+/* ======== 文字排版系统 ======== */
+h1 {
+  font-family: 'Playfair Display', serif;
+  color: #6b5b95;
   text-align: center;
-  height:2rem;
-  font-size:13px;
-  
-  border:transparent;
-  background-color:black;
-}
-.popup-button:hover:{
-  
-  background-color: grey;
-}
-	
-.popup-button:not(.active) {
-    border-bottom: 1px solid white;
+  margin: 2rem 0;
+  position: relative;
 }
 
-
-
-
-
-
-.popup-button.active {
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    border-bottom: 1px solid black;
+h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: rgba(107, 91, 149, 0.3);
+  margin: 1rem auto;
 }
 
-
-#ui-dialog-titlebar {
-	background-color: #000;
-	min-height: 24px;
-
-border-bottom: 1px solid white;
-  
-    z-index: 1;
-}
- 
-#ui-dialog-title {
-	height:1.62rem;
-	padding:none;
-}
-@media only screen and (max-width: 768px) {
-    
-
-    #ui-dialog-title {
-        height: 1.62rem; 
-    
-    }
+p {
+  margin: 1.2rem 0;
+  padding: 0.8rem 1.2rem;
+  background: rgba(245, 245, 255, 0.6);
+  border-radius: 6px;
+  transition: background 0.3s ease;
 }
 
-@media only screen and (min-width: 769px) {
-   
-    #ui-dialog-title {
-        height: 1.65rem;
-        
-    }
+/* ======== 链接交互系统 ======== */
+a.link-internal {
+  color: #7a9eb1 !important;
+  border-bottom: 1px dashed rgba(122, 158, 177, 0.4);
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
 }
-：</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+a.link-internal:hover {
+  color: #6b5b95 !important;
+  border-bottom-style: solid;
+  text-shadow: 0 0 8px rgba(107, 91, 149, 0.1);
+}
+
+/* ======== 响应式优化 ======== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .passage {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  #ui-bar {
+    width: 70% !important;
+    border-radius: 0 16px 16px 0 !important;
+  }
+
+  #sidebar button {
+    padding: 6px 10px !important;
+    font-size: 0.9rem !important;
+  }
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 
 
